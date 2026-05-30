@@ -1,30 +1,37 @@
 let students = [];
 let captchaCode = "";
 
-fetch("Data Siswa Kelas9.csv")
-    .then(res => res.text())
-    .then(data => {
-        const rows = data.split("\n").slice(1);
-        students = rows.map(row => {
-            const cols = row.split(",");
-            return {
-                nisn: cols[0]?.trim(),
-                nama: cols[1]?.trim(),
-                status: cols[2]?.trim()
-            };
-        });
+// Load CSV
+async function loadCSV() {
+    const response = await fetch("Data%20Siswa%20Kelas9.csv");
+    const data = await response.text();
+
+    const rows = data.trim().split("\n").slice(1);
+
+    students = rows.map(row => {
+        const cols = row.split(",");
+        return {
+            nisn: cols[0].trim(),
+            nama: cols[1].trim(),
+            status: cols[2].trim()
+        };
     });
 
-function generateCaptcha() {
-    captchaCode = Math.random().toString(36).substring(2, 7);
-    document.getElementById("captcha").innerText = captchaCode;
+    console.log(students);
 }
 
-if(document.getElementById("captcha")) generateCaptcha();
+// Captcha
+function generateCaptcha() {
+    captchaCode = Math.random().toString(36).substring(2, 7);
+    if(document.getElementById("captcha")){
+        document.getElementById("captcha").innerText = captchaCode;
+    }
+}
 
+// Login
 function login() {
-    const nisn = document.getElementById("nisn").value;
-    const captchaInput = document.getElementById("captchaInput").value;
+    const nisn = document.getElementById("nisn").value.trim();
+    const captchaInput = document.getElementById("captchaInput").value.trim();
 
     if(captchaInput !== captchaCode){
         alert("Captcha salah!");
@@ -36,7 +43,10 @@ function login() {
     window.location.href = "pengumuman.html";
 }
 
-if(window.location.pathname.includes("pengumuman.html")){
+// Tampilkan hasil
+async function showResult() {
+    await loadCSV();
+
     const nisn = localStorage.getItem("nisn");
     const student = students.find(s => s.nisn === nisn);
 
@@ -66,4 +76,11 @@ if(window.location.pathname.includes("pengumuman.html")){
                 "<h2>Data tidak ditemukan</h2>";
         }
     }, 4000);
+}
+
+// Init
+generateCaptcha();
+
+if(window.location.pathname.includes("pengumuman.html")){
+    showResult();
 }
