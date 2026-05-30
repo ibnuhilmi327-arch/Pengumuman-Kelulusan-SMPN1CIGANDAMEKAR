@@ -1,11 +1,15 @@
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    padding: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center;   /* tengah horizontal */
+    align-items: center;       /* tengah vertikal */
+    flex-direction: column;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
 }
 
 .container {
