@@ -136,3 +136,40 @@ button:hover {
         transform: translateY(0);
     }
 }
+
+/* LOADING SCREEN */
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,40,0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid rgba(255,255,255,0.2);
+    border-top: 8px solid #ffd700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+#countdown {
+    font-size: 70px;
+    font-weight: bold;
+    color: #ffd700;
+    margin-top: 20px;
+    animation: pulse 1s infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
