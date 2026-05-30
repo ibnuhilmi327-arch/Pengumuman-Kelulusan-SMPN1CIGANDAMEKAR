@@ -1,61 +1,87 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-.login-page {
-    background: linear-gradient(135deg, #004aad, #00c6ff);
-    color: white;
-}
-
 .result-page {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: white;
-}
-
-.container, .result-box {
-    margin: 80px auto;
-    width: 400px;
-    padding: 30px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
-}
-
-.logo {
-    width: 100px;
-}
-
-input {
-    width: 90%;
-    padding: 12px;
-    margin: 10px;
-    border-radius: 10px;
-    border: none;
-}
-
-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    background: gold;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.captcha-box {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-#captcha {
+.result-card {
+    width: 550px;
+    padding: 35px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    text-align: center;
+    border: 2px solid rgba(255,255,255,0.2);
+    animation: fadeIn 1.2s ease;
+}
+
+.result-logo {
+    width: 80px;
+    height: 80px;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.header-top h2 {
+    margin: 0;
     font-size: 24px;
-    font-weight: bold;
-    background: white;
-    color: black;
-    padding: 8px 15px;
-    border-radius: 10px;
+    color: #ffd700;
+}
+
+.header-top p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.judul {
+    font-size: 34px;
+    margin: 20px 0;
+    color: white;
+    text-shadow: 0 0 12px rgba(255,255,255,0.5);
+}
+
+#result h2 {
+    margin: 12px 0;
+    font-size: 24px;
+}
+
+#result h1 {
+    font-size: 52px;
+    color: #00ff88;
+    text-shadow: 0 0 20px #00ff88;
+    animation: pulse 1s infinite;
+}
+
+.footer-msg {
+    margin-top: 25px;
+    font-size: 18px;
+    opacity: 0.9;
+    color: #e0f2fe;
+}
+
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.08);}
+    100% {transform: scale(1);}
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
