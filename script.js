@@ -53,29 +53,59 @@ async function showResult() {
     const drumroll = document.getElementById("drumroll");
     const success = document.getElementById("success");
 
+    const loading = document.getElementById("loading-screen");
+    const resultCard = document.getElementById("result-card");
+    const countdown = document.getElementById("countdown");
+
+    const motivasi = [
+        "Langkahmu baru dimulai, teruslah berkarya ✨",
+        "Selamat, masa depan cerah menantimu 🌟",
+        "Terus belajar dan raih cita-citamu 🚀",
+        "Kelulusan ini awal perjalanan hebatmu 🎓",
+        "Banggakan dirimu dan orang tuamu 💙"
+    ];
+
+    let count = 3;
+
     drumroll.play();
 
-    setTimeout(() => {
-        drumroll.pause();
-        success.play();
+    const timer = setInterval(() => {
+        countdown.textContent = count;
+        count--;
 
-        if(student){
-            document.getElementById("result").innerHTML = `
-                <h2>NISN: ${student.nisn}</h2>
-                <h2>${student.nama}</h2>
-                <h1 style="color:yellow;">🎓 ${student.status} 🎉</h1>
-            `;
+        if (count < 0) {
+            clearInterval(timer);
 
-            confetti({
-                particleCount: 300,
-                spread: 150
-            });
+            loading.style.display = "none";
+            resultCard.style.display = "block";
 
-        } else {
-            document.getElementById("result").innerHTML =
-                "<h2>Data tidak ditemukan</h2>";
+            drumroll.pause();
+            success.play();
+
+            if(student){
+                const randomMotivasi =
+                    motivasi[Math.floor(Math.random() * motivasi.length)];
+
+                document.getElementById("result").innerHTML = `
+                    <h2>NISN: ${student.nisn}</h2>
+                    <h2>${student.nama}</h2>
+                    <h1>🎓 ${student.status} 🎉</h1>
+                    <p style="font-size:20px; color:#ffd700; margin-top:20px;">
+                        ${randomMotivasi}
+                    </p>
+                `;
+
+                confetti({
+                    particleCount: 400,
+                    spread: 180
+                });
+
+            } else {
+                document.getElementById("result").innerHTML =
+                    "<h2>Data tidak ditemukan</h2>";
+            }
         }
-    }, 4000);
+    }, 1000);
 }
 
 // Init
