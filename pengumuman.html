@@ -2,39 +2,46 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Hasil Kelulusan</title>
+    <title>Pengumuman Kelulusan</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="result-page">
 
-    <canvas id="confetti"></canvas>
-    
+    <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="spinner"></div>
-            <h2>Sedang memproses kelulusan...</h2>
-            <p>Harap tunggu</p>
+        <h2>Sedang memproses kelulusan...</h2>
+        <p>Harap tunggu</p>
         <div id="countdown">3</div>
     </div>
-    
-    <div class="result-card" id="result-card" style="display:none;">
-        <div class="header-top">
-            <img src="Logo SMPN 1 CGM (1).png" class="result-logo">
-            <div>
-                <h2>SMPN 1 CIGANDAMEKAR</h2>
-                <p>Tahun Pelajaran 2025/2026</p>
+
+    <!-- Halaman Pengumuman -->
+    <div id="announcementPage">
+
+        <div class="result-card" id="result-card" style="display:none;">
+
+            <div class="header-top">
+                <img src="logo.png" class="result-logo">
+
+                <div>
+                    <h2>SMPN 1 CIGANDAMEKAR</h2>
+                    <p>Tahun Pelajaran 2025/2026</p>
+                </div>
             </div>
+
+            <hr>
+
+            <h1 class="judul">PENGUMUMAN KELULUSAN</h1>
+
+            <div id="result"></div>
+
+            <div class="footer-msg">
+                Selamat atas kelulusanmu 🎓<br>
+                Semoga sukses di jenjang berikutnya
+            </div>
+
         </div>
 
-        <hr>
-
-        <h1 class="judul">PENGUMUMAN KELULUSAN</h1>
-
-        <div id="result"></div>
-
-        <div class="footer-msg">
-            Selamat atas kelulusanmu 🎓<br>
-            Semoga sukses di jenjang berikutnya
-        </div>
     </div>
 
     <audio id="drumroll" src="drumroll.mp3"></audio>
@@ -42,5 +49,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
